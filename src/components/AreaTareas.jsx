@@ -26,12 +26,9 @@ const AreaTareas = () => {
 
     useEffect(()=>{
         if(Object.keys(nuevaTarea).length === 0){
-            console.log("esta vacio")
         }
         else{
-            console.log("hola me estoy ejecutando")
-            console.log(nuevaTarea)
-            dispatch(agregarNuevaTarea({nuevaTarea:nuevaTarea}));
+            dispatch(agregarNuevaTarea(nuevaTarea));
         }
     }, [nuevaTarea])
 
@@ -42,6 +39,7 @@ const AreaTareas = () => {
         <div className='flex flex-col gap-5 items-center'>
             <h1>Area de Tareas</h1>
             <AddNuevaTarea setOpenModal={setOpenModal} />
+            <button onClick={()=>{console.log(tareasPendientesArray)}}>VER TAREAS PENDIENTES</button>
             {
                 openModal? (<ModalNuevaTarea setOpenModal={setOpenModal} setNuevaTarea={setNuevaTarea} />) : null
             }
@@ -49,6 +47,7 @@ const AreaTareas = () => {
                 tareasPendientesArray.length>0? (
                     tareasPendientesArray.map((tarea, index)=>(
                         <TareasPendientes   key={index} 
+                                            id={tarea.id}
                                             titular={tarea.titular} 
                                             direccion={tarea.direccion}
                                             telefono={tarea.telefono}

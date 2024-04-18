@@ -3,15 +3,17 @@ const ModalNuevaTarea = ({setOpenModal, setNuevaTarea}) => {
 
     const handleAgregarTrabajo = (e) =>{
         const titular = e.target.titular.value;
-        const numero_cliente = e.target.numero_cliente.value;
+        const numero_cliente = e.target.numero_cliente.value.trim() !== "" ? e.target.numero_cliente.value : "indefinido";;
         const direccion = e.target.direccion.value;
-        const telefono = e.target.telefono.value;
+        const telefono = e.target.telefono.value.trim() !== "" ? e.target.numero_cliente.value : "indefinido";;
         const trabajo = e.target.trabajo.value;
-        const accesspoint_caja = e.target.accesspoint_caja.value;
-        const direccion_ip_precinto = e.target.direccion_ip_precinto.value;
-        const info_adicional = e.target.info_adicional.value;
+        const accesspoint_caja = e.target.accesspoint_caja.value.trim() !== "" ? e.target.numero_cliente.value : "indefinido";;
+        const direccion_ip_precinto = e.target.direccion_ip_precinto.value.trim() !== "" ? e.target.numero_cliente.value : "indefinido";;
+        const info_adicional = e.target.info_adicional.value.trim() !== "" ? e.target.numero_cliente.value : "indefinido";;
+        const randomNumber = Math.ceil((Math.random()) * 10) //faltaria, hacer un foreach para ver si coincide con otro id del array.
         if(titular && direccion && trabajo){
             const nuevaTareaObjeto = {
+                id:randomNumber,
                 titular,
                 numero_cliente,
                 direccion,
@@ -27,15 +29,15 @@ const ModalNuevaTarea = ({setOpenModal, setNuevaTarea}) => {
 }
     return (
         <div className='flex flex-col gap-3 bg-purple-500 w-auto'>
-            <form onSubmit={ev => {
-                ev.preventDefault()
-                handleAgregarTrabajo(ev)
+            <form onSubmit={e => {
+                e.preventDefault()
+                handleAgregarTrabajo(e)
             }}>
                 <input name='titular' className='inputNuevaTarea' type="text" placeholder="Nombre del cliente"/>
-                <input name='numero_cliente' className='inputNuevaTarea' type="number" placeholder="Numero de cliente" />
+                <input name='numero_cliente' className='inputNuevaTarea' type="text" placeholder="Numero de cliente" />
                 <input name='direccion' className='inputNuevaTarea' type='text' placeholder='Direccion' />
                 {/* <input name='' className='inputNuevaTarea' type='text' placeholder='Localidad' /> despeues lo agrego  */} 
-                <input name='telefono' className='inputNuevaTarea' type='number' placeholder='Contacto' />
+                <input name='telefono' className='inputNuevaTarea' type='text' placeholder='Contacto' />
                 <input name='trabajo' className='inputNuevaTarea' type='text' placeholder='Trabajo' />
                 <input name='accesspoint_caja' className='inputNuevaTarea' type='text' placeholder='Accesspoint/Caja' />
                 <input name='direccion_ip_precinto' className='inputNuevaTarea' type='text' placeholder='Direccion IP/Precinto' />
