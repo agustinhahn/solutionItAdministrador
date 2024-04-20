@@ -4,7 +4,6 @@ import ModalNuevaTarea from "./reutilizables/ModalNuevaTarea"
 import { useDispatch, useSelector } from 'react-redux'
 import {  setTareasPendientes, agregarNuevaTarea } from '../features/itAdminSlice'
 import { useGetTrabajosQuery } from "../app/services/itServicesAdmin"
-import TareasPendientes from "./TareasPendientes"
 import TablaParaTareas from "./reutilizables/TablaParaTareas"
 
 const AreaTareas = () => {
@@ -21,9 +20,9 @@ const AreaTareas = () => {
         }
     }, [trabajosPendientesQuery])
 
-    const fetchData = () => {
-        trabajosPendientesQuery.refetch()
-    };
+    // const fetchData = () => {
+    //     trabajosPendientesQuery.refetch()
+    // };
 
     useEffect(()=>{
         if(Object.keys(nuevaTarea).length === 0){
@@ -37,32 +36,19 @@ const AreaTareas = () => {
 
 
     return (
-        <div className='flex flex-col gap-5 items-center'>
+        <div className='areaTareas'>
             <h1>Area de Tareas</h1>
-            <AddNuevaTarea functionButton={setOpenModal} title={"Agregar Nueva Tarea"} />
-            <AddNuevaTarea functionButton={tareasPendientesArray} title={"visualizar arrays"} />
+            <div className="flex gap-8">
+                <AddNuevaTarea functionButton={setOpenModal} title={"Agregar Nueva Tarea"} />
+                <button onClick={()=>{console.log(tareasPendientesArray)}}>verarray</button>
+            </div>
+            <div>
             {
                 openModal? (<ModalNuevaTarea setOpenModal={setOpenModal} setNuevaTarea={setNuevaTarea} />) : null
             }
-            {/*  */}
             {
-                tareasPendientesArray.length>0? (
-                    tareasPendientesArray.map((tarea, index)=>(
-                        <TablaParaTareas    key={index}
-                                            id={tarea.id}
-                                            titular={tarea.titular} 
-                                            direccion={tarea.direccion}
-                                            telefono={tarea.telefono}
-                                            trabajo={tarea.trabajo}
-                                            info_adicional={tarea.info_adicional}
-                                            accesspoint_caja={tarea.accesspoint_caja}
-                                            direccion_ip_precinto={tarea.direccion_ip_precinto}
-                                            numero_cliente={tarea.numero_cliente}
-                                            />
-                    ))
-                ):null
+                tareasPendientesArray.length>0? (<TablaParaTareas />):null
             }
-            {/*  */}
             {
                 tareasSuspendidasArray.length>0? (
                     tareasSuspendidasArray.map((tarea2, index)=>(
@@ -70,6 +56,8 @@ const AreaTareas = () => {
                     ))
                 ):null
             }
+            </div>
+
         </div>
     )
 }

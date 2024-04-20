@@ -10,8 +10,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: rgba(202, 202, 202, 0.87);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -77,31 +75,28 @@ button:focus-visible {
   background-color: #535bf2;
 }
 
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-template-columns: auto 1fr 1fr 1fr 1fr;
   grid-template-rows: auto 1fr 1fr 1fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  min-height: 100vh; /* Ajusta la altura al 100% del viewport */
-  width: 100vw; /* Ajusta el ancho al 100% del viewport */
+  min-height: 100vh;  Ajusta la altura al 100% del viewport 
+  width: auto; Ajusta el ancho al 100% del viewport 
 }
   
   .div1 { grid-area: 1 / 1 / 2 / 2; }
   .div2 { grid-area: 2 / 2 / 6 / 6; }
-  .div3 { grid-area: 1 / 2 / 2 / 6;  width: auto; height: 100px; }
+  .div3 { grid-area: 1 / 2 / 2 / 6;  width: auto; height: 100px; } */
 
-/* .div1{
-  background-color: red;
-}
-.div2{
-  background-color: rgb(86, 86, 119);
-  padding: 20px;
-}
 
-.div3{
-  background-color: #747bff;
-} */
+.areaTareas{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
 
 .inputNuevaTarea{
   min-width: 200px;
@@ -110,17 +105,34 @@ button:focus-visible {
   margin: 10px;
 }
 
+.tablaPrincipal{
+  width: auto;
+  background-color: rgb(89, 89, 235);
+  margin-top: 50px;
+}
+
+.divTablaTitulos{
+  display: flex;
+  color: white;
+}
+
+
 .divTabla{
   display: flex;
-  min-width: 200px;
-  background-color: red;
+  background-color: rgb(233, 218, 218);
+}
+
+.divTabla:hover{
+  background-color: #4f9c6d;
 }
 
 .filaTabla{
   width: 200px;
+  margin: 20px;
 }
 
-.divTablaTitulos{
-  min-width: 200px;
-  display: flex;
+.btnActionTP{
+  margin: 10px;
+  padding: 10px;
+  height: 40px;
 }

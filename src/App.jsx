@@ -6,14 +6,13 @@ import AreaTareas from "./components/AreaTareas"
 const App = () =>{
   return(
     <>
-    <div className="grid-container">
-      <div className="div1">
+    <div>
+      <div>
         <NavLateral />
       </div>
-      <div className="div2">
+      <div>
         <AreaTareas />
       </div>
-      <div className="div3">titulos</div>
     </div>
     </>
   )

@@ -3,7 +3,7 @@ import {  editarTarea } from '../../features/itAdminSlice'
 
 
 
-const ModalEdit = ({ titular, direccion, telefono, trabajo, info_adicional, accesspoint_caja, direccion_ip_precinto, numero_cliente, id,setUseModalEdit }) => {
+const ModalEditw = ({ titular, direccion, telefono, trabajo, info_adicional, accesspoint_caja, direccion_ip_precinto, numero_cliente, id,setUseModalEdit }) => {
 
     const dispatch = useDispatch();
     const handleAgregarTrabajo = (e) =>{
@@ -56,4 +56,4 @@ const ModalEdit = ({ titular, direccion, telefono, trabajo, info_adicional, acce
         </div>
     )
 }
-export default ModalEdit
+export default ModalEditw
