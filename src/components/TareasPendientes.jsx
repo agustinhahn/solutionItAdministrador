@@ -2,7 +2,9 @@ import { useState } from "react"
 import ModalMasInfo from "./ModalMasInfo"
 import { useDispatch, useSelector } from 'react-redux'
 import {  eliminarTarea } from '../features/itAdminSlice'
-import ModalEdit from "./ModalEdit"
+import ModalEdit from "./reutilizables/ModalEdit"
+import ButtonActionTP from "./reutilizables/ButtonActionTP"
+import DataPrintTareasPendientes from "./reutilizables/DataPrintTareasPendientes"
 
 const TareasPendientes = ({ titular, direccion, telefono, trabajo, info_adicional, accesspoint_caja, direccion_ip_precinto, numero_cliente, id}) => {
     const dispatch = useDispatch();
@@ -16,15 +18,14 @@ const TareasPendientes = ({ titular, direccion, telefono, trabajo, info_adiciona
 
     return (
         <div className='flex gap-3 bg-slate-500'>
-            <div className='flex gap-3'>
-                <p className="datosUser">{titular}</p>
-                <p className="datosUser">{direccion}</p>
-                <p className="datosUser">{telefono}</p>
-                <p className="datosUser">{trabajo}</p>
-                <p className="datosUser">{accesspoint_caja}</p>
-                <p className="datosUser">{direccion_ip_precinto}</p>
-                <p className="datosUser">{numero_cliente}</p>
-            </div>
+            <DataPrintTareasPendientes  titular={titular}
+                                        direccion={direccion}
+                                        telefono={telefono}
+                                        trabajo={trabajo}
+                                        accesspoint_caja={accesspoint_caja}
+                                        direccion_ip_precinto={direccion_ip_precinto}
+                                        numero_cliente={numero_cliente}
+                                        />
             {
                 useModal? (<ModalMasInfo info_adicional={info_adicional} />):null
             }
@@ -43,9 +44,9 @@ const TareasPendientes = ({ titular, direccion, telefono, trabajo, info_adiciona
                                 />):null
             }
             <div className='flex gap-3'>
-                <button onClick={()=>{setUseModal(true)}} >+ info</button>
-                <button onClick={()=>{setUseModalEdit(true)}} >editar</button>
-                <button onClick={()=>deleteTarea()}>eliminar</button>
+                <ButtonActionTP title={"+ info"} functionButton={setUseModal} dataFunction={true}/>
+                <ButtonActionTP title={"editar"} functionButton={setUseModalEdit} dataFunction={true}  />
+                <ButtonActionTP title={"eliminar"}functionButton={deleteTarea} dataFunction=" "  />
             </div>
         </div>
     )

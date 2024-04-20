@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import AddNuevaTarea from "./AddNuevaTarea"
-import ModalNuevaTarea from "./ModalNuevaTarea"
+import AddNuevaTarea from "./reutilizables/AddNuevaTarea"
+import ModalNuevaTarea from "./reutilizables/ModalNuevaTarea"
 import { useDispatch, useSelector } from 'react-redux'
 import {  setTareasPendientes, agregarNuevaTarea } from '../features/itAdminSlice'
 import { useGetTrabajosQuery } from "../app/services/itServicesAdmin"
 import TareasPendientes from "./TareasPendientes"
+import TablaParaTareas from "./reutilizables/TablaParaTareas"
 
 const AreaTareas = () => {
     const dispatch = useDispatch();
@@ -38,15 +39,16 @@ const AreaTareas = () => {
     return (
         <div className='flex flex-col gap-5 items-center'>
             <h1>Area de Tareas</h1>
-            <AddNuevaTarea setOpenModal={setOpenModal} />
-            <button onClick={()=>{console.log(tareasPendientesArray)}}>VER TAREAS PENDIENTES</button>
+            <AddNuevaTarea functionButton={setOpenModal} title={"Agregar Nueva Tarea"} />
+            <AddNuevaTarea functionButton={tareasPendientesArray} title={"visualizar arrays"} />
             {
                 openModal? (<ModalNuevaTarea setOpenModal={setOpenModal} setNuevaTarea={setNuevaTarea} />) : null
             }
+            {/*  */}
             {
                 tareasPendientesArray.length>0? (
                     tareasPendientesArray.map((tarea, index)=>(
-                        <TareasPendientes   key={index} 
+                        <TablaParaTareas    key={index}
                                             id={tarea.id}
                                             titular={tarea.titular} 
                                             direccion={tarea.direccion}
@@ -60,7 +62,8 @@ const AreaTareas = () => {
                     ))
                 ):null
             }
-                        {
+            {/*  */}
+            {
                 tareasSuspendidasArray.length>0? (
                     tareasSuspendidasArray.map((tarea2, index)=>(
                         <p key={index}>{tarea2.titular}</p>

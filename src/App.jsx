@@ -1,6 +1,6 @@
-import ContainerGral from "./components/ContainerGral"
 import NavLateral from "./components/NavLateral"
 import AreaTareas from "./components/AreaTareas"
+
 
 
 const App = () =>{

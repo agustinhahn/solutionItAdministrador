@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import {  editarTarea } from '../features/itAdminSlice'
+import {  editarTarea } from '../../features/itAdminSlice'
 
 
 
