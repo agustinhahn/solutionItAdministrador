@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import ButtonActionTP from './reutilizables/ButtonActionTP';
 import Modal from 'react-bootstrap/Modal';
 
 const ModalMasInformacion = ({info_adicional,accesspoint_caja,direccion_ip_precinto,numero_cliente}) => {
@@ -10,12 +10,9 @@ const ModalMasInformacion = ({info_adicional,accesspoint_caja,direccion_ip_preci
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                boton modal
-            </Button>
-
+            <ButtonActionTP title={"+ Info"} functionButton={handleShow} dataFunction={true} />
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton className='modalHeader'>
                     <Modal.Title>MAS DATOS</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -29,9 +26,9 @@ const ModalMasInformacion = ({info_adicional,accesspoint_caja,direccion_ip_preci
                     <p>{numero_cliente}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
+                    <button className='btnCancelModal' onClick={handleClose}>
+                        Cerrar
+                    </button>
                 </Modal.Footer>
             </Modal>
         </>

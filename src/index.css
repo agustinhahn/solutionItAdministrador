@@ -28,7 +28,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   width: auto;
   min-height: 100vh;
   background-color: #fbfbfd;
@@ -71,8 +70,10 @@ button:focus-visible {
   }
 }
 
-.btnprueba{
-  background-color: #535bf2;
+.container{
+  display: flex;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* .grid-container {
@@ -98,16 +99,34 @@ button:focus-visible {
   padding: 50px;
 }
 
+.btnAgregarTarea{
+  background-color: #213547;
+  color: white;
+  font-size: 16px;
+}
+
 .inputNuevaTarea{
   min-width: 200px;
   height: 30px;
   padding: 10px;
   margin: 10px;
+  background-color: rgba(211, 218, 224, 0.966);
+  border-radius: 15px;
+}
+
+.inputTextArea{
+  min-width: 400px;
+  min-height: 100px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(211, 218, 224, 0.966);
+  border-radius: 15px;
 }
 
 .tablaPrincipal{
   width: auto;
-  background-color: rgb(89, 89, 235);
+  background-color: #213547;
   margin-top: 50px;
 }
 
@@ -119,11 +138,12 @@ button:focus-visible {
 
 .divTabla{
   display: flex;
-  background-color: rgb(233, 218, 218);
+  background-color: rgba(236, 231, 231, 0.993);
 }
 
 .divTabla:hover{
-  background-color: #4f9c6d;
+  background-color: #7ca8ceb7;
+  font-weight: bold;
 }
 
 .filaTabla{
@@ -135,4 +155,42 @@ button:focus-visible {
   margin: 10px;
   padding: 10px;
   height: 40px;
+  min-width: 80px;
+}
+
+/* MODALES */
+
+.modalHeader{
+  background-color: #213547;
+  color: #fbfbfd  ;
+}
+
+.modalBody{
+  background-color: #fbfbfd;
+  border-radius: 25px;
+}
+
+.btnOkModal{
+  width: 180px;
+  background-color: rgba(53, 61, 209, 0.342);
+}
+
+.btnCancelModal{
+  width: 180px;
+  background-color: rgba(209, 53, 53, 0.315);
+}
+
+/*  */
+
+
+.btnMenu{
+  min-height: 100vh;
+  background-color: #213547;
+  margin: 0px;
+  padding: 5px;
+  border-radius: 0px;
+  width: 25px;
+  writing-mode: vertical-rl; /* Orientación vertical de derecha a izquierda */
+  text-orientation: upright; /* Orientación vertical */
+  color: rgb(219, 218, 218);
 }

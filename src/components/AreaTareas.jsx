@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 import AddNuevaTarea from "./reutilizables/AddNuevaTarea"
-import ModalNuevaTarea from "./reutilizables/ModalNuevaTarea"
 import { useDispatch, useSelector } from 'react-redux'
 import {  setTareasPendientes, agregarNuevaTarea } from '../features/itAdminSlice'
 import { useGetTrabajosQuery } from "../app/services/itServicesAdmin"
 import TablaParaTareas from "./reutilizables/TablaParaTareas"
+import ModalTareaNueva from "./reutilizables/ModalTareaNueva"
 
 const AreaTareas = () => {
     const dispatch = useDispatch();
@@ -20,9 +20,6 @@ const AreaTareas = () => {
         }
     }, [trabajosPendientesQuery])
 
-    // const fetchData = () => {
-    //     trabajosPendientesQuery.refetch()
-    // };
 
     useEffect(()=>{
         if(Object.keys(nuevaTarea).length === 0){
@@ -32,19 +29,16 @@ const AreaTareas = () => {
         }
     }, [nuevaTarea])
 
-    const [openModal, setOpenModal] = useState(false)
-
+    const [show, setShow] = useState(false)
 
     return (
         <div className='areaTareas'>
-            <h1>Area de Tareas</h1>
             <div className="flex gap-8">
-                <AddNuevaTarea functionButton={setOpenModal} title={"Agregar Nueva Tarea"} />
-                <button onClick={()=>{console.log(tareasPendientesArray)}}>verarray</button>
+                <AddNuevaTarea functionButton={setShow} title={"Agregar Nueva Tarea"} />
             </div>
             <div>
             {
-                openModal? (<ModalNuevaTarea setOpenModal={setOpenModal} setNuevaTarea={setNuevaTarea} />) : null
+                show? (<ModalTareaNueva setOpenModal={setShow} show={show} setNuevaTarea={setNuevaTarea} />) : null
             }
             {
                 tareasPendientesArray.length>0? (<TablaParaTareas />):null

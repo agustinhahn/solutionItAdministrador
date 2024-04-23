@@ -23,21 +23,6 @@ const ElementosTabla = ({ id, titular, direccion, telefono, trabajo, info_adicio
                     <td className="filaTabla">{direccion}</td>
                     <td className="filaTabla">{telefono}</td>
                     <td className="filaTabla">{trabajo}</td>
-                    {/* {
-                        useModalEdit ? (<ModalEdit
-                            key={id}
-                            titular={titular}
-                            direccion={direccion}
-                            telefono={telefono}
-                            trabajo={trabajo}
-                            info_adicional={info_adicional}
-                            accesspoint_caja={accesspoint_caja}
-                            direccion_ip_precinto={direccion_ip_precinto}
-                            numero_cliente={numero_cliente}
-                            id={id}
-                            setUseModalEdit={setUseModalEdit}
-                        />) : null
-                    } */}
                     <td className="flex">
                         <ModalMasInformacion
                         info_adicional={info_adicional}
@@ -56,8 +41,7 @@ const ElementosTabla = ({ id, titular, direccion, telefono, trabajo, info_adicio
                             numero_cliente={numero_cliente}
                             id={id}
                         />
-                        {/* <ButtonActionTP title={"editar"} functionButton={setUseModalEdit} dataFunction={true} /> */}
-                        <ButtonActionTP title={"eliminar"} functionButton={deleteTarea} dataFunction=" " />
+                        <ButtonActionTP title={"Eliminar"} functionButton={deleteTarea} dataFunction=" " />
                     </td>
                 </tr>
             </tbody>
