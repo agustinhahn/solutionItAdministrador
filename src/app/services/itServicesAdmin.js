@@ -103,7 +103,7 @@ export const itApi = createApi({
         getProfileImage: builder.query({
             query: (localId) => `profileImage/${localId}.json`,
             providesTags:["image"]
-        })
+        }),
     })
 })
 

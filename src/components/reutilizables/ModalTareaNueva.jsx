@@ -54,6 +54,7 @@ const ModalTareaNueva = ({ setOpenModal, setNuevaTarea, show }) => {
                             <input name='direccion_ip_precinto' className='inputNuevaTarea' type='text' placeholder='Direccion IP/Precinto' />
                             <textarea name='info_adicional' className='inputTextArea' type='text' placeholder='Comentarios adicionales' />
                             {/* <input name='' className='inputNuevaTarea' type='number' placeholder='Horario' /> despues lo agrego*/}
+                            <span className='spanModal'>Campos obligatorios: Nombre, direccion y trabajo.</span>
                             <div className='flex justify-center gap-4 mt-4 mb-8'>
                                 <button type='submit' className='btnOkModal'>Agregar trabajo</button>
                                 <button onClick={() => { setOpenModal(false) }} className='btnCancelModal'>Cancelar</button>

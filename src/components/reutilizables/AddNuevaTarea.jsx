@@ -1,10 +1,10 @@
 
 
-const AddNuevaTarea = ({functionButton, title}) => {
+const AddNuevaTarea = ({functionButton, title, actionFunction}) => {
 
     return (
         <>
-            <button onClick={()=>functionButton(true)}  className='btnAgregarTarea'>{title}</button>
+            <button onClick={()=>functionButton(actionFunction)}  className='btnAgregarTarea'>{title}</button>
         </>
     )
 }

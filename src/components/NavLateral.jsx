@@ -1,23 +1,23 @@
 
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import ButtonNav from './reutilizables/ButtonNav';
 
-function NavLateral({show, setMostrarMenu}) {
+function NavLateral({ show, setMostrarMenu }) {
 
     const handleClose = () => setMostrarMenu(false);
 
     return (
         <>
-        <div>
-            <Offcanvas show={show} onHide={handleClose}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>CUADRILLAS TECNICAS</Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    <button>soy boton</button>
-                </Offcanvas.Body>
-            </Offcanvas>
-        </div>
-
+                <Offcanvas show={show} onHide={handleClose}>
+                    <Offcanvas.Header>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <ButtonNav title={"patente1"} />
+                        <ButtonNav title={"patente2"} />
+                        <ButtonNav title={"patente3"} />
+                        <ButtonNav title={"patente4"} />
+                    </Offcanvas.Body>
+                </Offcanvas>
         </>
     );
 }

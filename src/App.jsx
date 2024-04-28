@@ -14,7 +14,7 @@ const App = () =>{
     <>
     <div className="container">
       <div>
-        <button className="btnMenu" onClick={handleOpenModal}>MENU</button>
+        <button className="btnMenu" onClick={handleOpenModal}>···</button>
         <NavLateral show={mostrarMenu} setMostrarMenu={setMostrarMenu} />
       </div>
       <div>

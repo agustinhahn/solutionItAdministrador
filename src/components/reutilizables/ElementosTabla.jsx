@@ -4,16 +4,19 @@ import { setTareasPendientes, agregarNuevaTarea, eliminarTarea } from "../../fea
 import ModalEdit from "../ModalEdit"
 import ButtonActionTP from "./ButtonActionTP"
 import ModalMasInformacion from "../ModalMasInformacion"
+import {  usePostActualizarTareasPendientesMutation } from "../../app/services/itServicesAdmin"
 
 const ElementosTabla = ({ id, titular, direccion, telefono, trabajo, info_adicional, accesspoint_caja, direccion_ip_precinto, numero_cliente,setUseModal,useModal}) => {
     const dispatch = useDispatch();
     const [openModal, setOpenModal] = useState(false)
     const [useModalEdit, setUseModalEdit] = useState(false)
+    const [actualizarTareasPendientes] = usePostActualizarTareasPendientesMutation()
 
     const deleteTarea = () => {
         dispatch(eliminarTarea({ id })) //tras presionar eliminar, que pregunte el motivo y lo guarde en una variable para el registro.
     }
 
+    //aca tengo que cargar un useeffect con actualizra tareas post se renderice la pantalla por deletetarea.
 
     return (
         <>
