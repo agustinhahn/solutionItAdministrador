@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { v4 as uuidv4 } from 'uuid';
 
 const ModalTareaNueva = ({ setOpenModal, setNuevaTarea, show }) => {
     const handleAgregarTrabajo = (e) => {
@@ -12,10 +11,9 @@ const ModalTareaNueva = ({ setOpenModal, setNuevaTarea, show }) => {
         const accesspoint_caja = e.target.accesspoint_caja.value.trim() !== "" ? e.target.accesspoint_caja.value : "indefinido";;
         const direccion_ip_precinto = e.target.direccion_ip_precinto.value.trim() !== "" ? e.target.direccion_ip_precinto.value : "indefinido";;
         const info_adicional = e.target.info_adicional.value.trim() !== "" ? e.target.info_adicional.value : "indefinido";;
-        const randomNumber = Math.ceil((Math.random()) * 10) //faltaria, hacer un foreach para ver si coincide con otro id del array.
         if (titular && direccion && trabajo) {
             const nuevaTareaObjeto = {
-                id: randomNumber,
+                id: uuidv4(),
                 titular,
                 numero_cliente,
                 direccion,

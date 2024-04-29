@@ -66,10 +66,8 @@ export const itAdminSlice = createSlice({
         },
         eliminarTarea:(state,action)=>{
             const {id} = action.payload;
-            const eliminarIndex = state.value.tareasPendientes.findIndex((p)=> p.id === id);
-            if(eliminarIndex!==-1){
-                const deleteTarea = state.value.tareasPendientes.splice(eliminarIndex,1);
-            } //podria manejar aqui para que se guarde el eliminado en otro lado por si quisiera un registro de ello.
+            const newArray = state.value.tareasPendientes.filter((t)=>t.id !==id)
+            state.value.tareasPendientes = newArray
         },
         editarTarea:(state,action)=>{
             const indexArrayEdit = state.value.tareasPendientes.findIndex((item)=> item.id === action.payload.id)
@@ -77,7 +75,7 @@ export const itAdminSlice = createSlice({
                 const deleteObj = state.value.tareasPendientes.splice(indexArrayEdit,1);
                 state.value.tareasPendientes.push(action.payload)
             }
-    }
+        }
     }})
 
 export const { equipoUsado, estadoTarea, setProducts, setTareasPendientes,agregarNuevaTarea,eliminarTarea, editarTarea} = itAdminSlice.actions
