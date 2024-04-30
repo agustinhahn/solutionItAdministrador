@@ -120,6 +120,20 @@ button:focus-visible {
 
 }
 
+.selectForm{
+  min-width: 200px;
+  height: 30px;
+  margin: 10px;
+  padding-left: 10px;
+  background-color: rgba(211, 218, 224, 0.966);
+  border-radius: 15px;
+  color: rgba(96, 105, 114, 0.582);
+}
+
+.opcionSelect{
+  color: rgb(119, 114, 114);
+}
+
 
 
 .inputTextArea{

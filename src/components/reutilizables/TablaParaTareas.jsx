@@ -8,8 +8,8 @@ const TablaParaTareas = () => {
 
     const dispatch = useDispatch();
     const trabajosPendientesQuery = useGetTrabajosQuery()
-    const tareasPendientesArray = useSelector(state => state.it.value.tareasPendientes)
-
+    let tareasPendientesArray = useSelector(state => state.it.value.tareasPendientes)
+    let copiaTareasPendientes = tareasPendientesArray.slice()
     useEffect(() => {
         if (trabajosPendientesQuery.data) {
             dispatch(setTareasPendientes(trabajosPendientesQuery.data))
@@ -27,8 +27,8 @@ const TablaParaTareas = () => {
                         <th className="filaTabla">TRABAJO</th>
                     </tr>
                 </thead>
-                    {
-                        tareasPendientesArray.map((tarea, index)=>(
+                {
+                        copiaTareasPendientes.sort((a,b)=>a.horario - b.horario).map((tarea, index)=>(
                             <ElementosTabla 
                             key={index}
                             id={tarea.id}
@@ -40,6 +40,7 @@ const TablaParaTareas = () => {
                             direccion_ip_precinto={tarea.direccion_ip_precinto}
                             numero_cliente={tarea.numero_cliente}
                             info_adicional={tarea.info_adicional}
+                            horario={tarea.horario}
                             />
                         ))
                     }

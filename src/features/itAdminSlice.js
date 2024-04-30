@@ -11,6 +11,7 @@ const initialState = {
         nuevaTareaSuspendida: [],
         tareasSuspendidas: [],
         mediosdepago: [],
+        horarios: [],
         datosTareaFinalizada: {
             equipoUsado: [],
             idTarea: [],
@@ -61,6 +62,9 @@ export const itAdminSlice = createSlice({
         setTareasPendientes: (state, action) => {
             state.value.tareasPendientes = action.payload
         },
+        setHorarios: (state,action)=>{
+            state.value.horarios = action.payload
+        },
         agregarNuevaTarea:(state,action)=>{
             state.value.tareasPendientes.push(action.payload)
         },
@@ -75,9 +79,14 @@ export const itAdminSlice = createSlice({
                 const deleteObj = state.value.tareasPendientes.splice(indexArrayEdit,1);
                 state.value.tareasPendientes.push(action.payload)
             }
+        },
+        horarioSelect:(state,action)=>{
+            const {horario} = action.payload
+            const newArray = state.value.horarios.filter((h)=>h !== horario)
+            state.value.horarios = newArray
         }
     }})
 
-export const { equipoUsado, estadoTarea, setProducts, setTareasPendientes,agregarNuevaTarea,eliminarTarea, editarTarea} = itAdminSlice.actions
+export const { equipoUsado, estadoTarea, setProducts, setTareasPendientes,agregarNuevaTarea,eliminarTarea, editarTarea, horarioSelect, setHorarios} = itAdminSlice.actions
 
 export default itAdminSlice.reducer

@@ -1,7 +1,13 @@
 import Modal from 'react-bootstrap/Modal';
 import { v4 as uuidv4 } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux'
+import { horarioSelect } from "../../features/itAdminSlice"
 
 const ModalTareaNueva = ({ setOpenModal, setNuevaTarea, show }) => {
+
+    const dispatch = useDispatch();
+    
+    const horariosDisponibles = useSelector(state => state.it.value.horarios)
     const handleAgregarTrabajo = (e) => {
         const titular = e.target.titular.value;
         const numero_cliente = e.target.numero_cliente.value.trim() !== "" ? e.target.numero_cliente.value : "indefinido";;
@@ -11,6 +17,7 @@ const ModalTareaNueva = ({ setOpenModal, setNuevaTarea, show }) => {
         const accesspoint_caja = e.target.accesspoint_caja.value.trim() !== "" ? e.target.accesspoint_caja.value : "indefinido";;
         const direccion_ip_precinto = e.target.direccion_ip_precinto.value.trim() !== "" ? e.target.direccion_ip_precinto.value : "indefinido";;
         const info_adicional = e.target.info_adicional.value.trim() !== "" ? e.target.info_adicional.value : "indefinido";;
+        const horario = parseInt(e.target.horario.value);
         if (titular && direccion && trabajo) {
             const nuevaTareaObjeto = {
                 id: uuidv4(),
@@ -21,9 +28,11 @@ const ModalTareaNueva = ({ setOpenModal, setNuevaTarea, show }) => {
                 trabajo,
                 accesspoint_caja,
                 direccion_ip_precinto,
-                info_adicional
+                info_adicional,
+                horario
             };
             setNuevaTarea(nuevaTareaObjeto);
+            dispatch(horarioSelect({horario})) // darle funcionalidad
             setOpenModal(false)
         }
     }
@@ -50,6 +59,18 @@ const ModalTareaNueva = ({ setOpenModal, setNuevaTarea, show }) => {
                             <input name='trabajo' className='inputNuevaTarea' type='text' placeholder='Trabajo' />
                             <input name='accesspoint_caja' className='inputNuevaTarea' type='text' placeholder='Accesspoint/Caja' />
                             <input name='direccion_ip_precinto' className='inputNuevaTarea' type='text' placeholder='Direccion IP/Precinto' />
+                            <select className='selectForm' name="horario" >
+                                <option className='opcionSelect'value="0">Elegir turno</option>
+                                {
+                                    horariosDisponibles.map((h, index) => (
+                                        <option
+                                            key={index}
+                                            className='opcionSelect'
+                                            value={h}
+                                        >{h}</option>
+                                    ))
+                                }
+                            </select>
                             <textarea name='info_adicional' className='inputTextArea' type='text' placeholder='Comentarios adicionales' />
                             {/* <input name='' className='inputNuevaTarea' type='number' placeholder='Horario' /> despues lo agrego*/}
                             <span className='spanModal'>Campos obligatorios: Nombre, direccion y trabajo.</span>

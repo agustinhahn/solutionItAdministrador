@@ -5,7 +5,7 @@ import ModalEdit from "../ModalEdit"
 import ButtonActionTP from "./ButtonActionTP"
 import ModalMasInformacion from "../ModalMasInformacion"
 
-const ElementosTabla = ({ id, titular, direccion, telefono, trabajo, info_adicional, accesspoint_caja, direccion_ip_precinto, numero_cliente,setUseModal,useModal}) => {
+const ElementosTabla = ({ id, titular, direccion, telefono, trabajo, info_adicional, accesspoint_caja, direccion_ip_precinto, numero_cliente,horario,setUseModal,useModal}) => {
     const dispatch = useDispatch();
 
 
@@ -27,6 +27,7 @@ const ElementosTabla = ({ id, titular, direccion, telefono, trabajo, info_adicio
                         accesspoint_caja={accesspoint_caja}
                         direccion_ip_precinto={direccion_ip_precinto}
                         numero_cliente={numero_cliente}
+                        horario={horario}
                         />
                         <ModalEdit 
                             titular={titular}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ButtonActionTP from './reutilizables/ButtonActionTP';
 import Modal from 'react-bootstrap/Modal';
 
-const ModalMasInformacion = ({info_adicional,accesspoint_caja,direccion_ip_precinto,numero_cliente}) => {
+const ModalMasInformacion = ({info_adicional,accesspoint_caja,direccion_ip_precinto,numero_cliente, horario}) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -24,6 +24,8 @@ const ModalMasInformacion = ({info_adicional,accesspoint_caja,direccion_ip_preci
                     <p>{direccion_ip_precinto}</p>
                     <p className='font-bold'>NUMERO DE CLIENTE</p>
                     <p>{numero_cliente}</p>
+                    <p className='font-bold'>TURNO COORDINADO</p>
+                    <p>{horario}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <button className='btnCancelModal' onClick={handleClose}>

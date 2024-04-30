@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import AddNuevaTarea from "./reutilizables/AddNuevaTarea"
 import { useDispatch, useSelector } from 'react-redux'
-import { setTareasPendientes, agregarNuevaTarea } from '../features/itAdminSlice'
-import { useGetTrabajosQuery, usePostActualizarTareasPendientesMutation } from "../app/services/itServicesAdmin"
+import { setTareasPendientes, agregarNuevaTarea, setHorarios } from '../features/itAdminSlice'
+import { useGetTrabajosQuery, usePostActualizarTareasPendientesMutation , useGetHorariosQuery} from "../app/services/itServicesAdmin"
 import TablaParaTareas from "./reutilizables/TablaParaTareas"
 import ModalTareaNueva from "./reutilizables/ModalTareaNueva"
 import Loading from "./reutilizables/Loading"
@@ -11,6 +11,7 @@ import SintTareas from "./reutilizables/SintTareas"
 const AreaTareas = () => {
     const dispatch = useDispatch();
     const trabajosPendientesQuery = useGetTrabajosQuery()
+    const horariosQuery = useGetHorariosQuery()
     const [actualizarTareasPendientes] = usePostActualizarTareasPendientesMutation()
     const tareasPendientesArray = useSelector(state => state.it.value.tareasPendientes)
     const tareasSuspendidasArray = useSelector(state => state.it.value.tareasSuspendidas)
@@ -23,6 +24,9 @@ const AreaTareas = () => {
         }
     }, [trabajosPendientesQuery])
 
+    useEffect(()=>{
+        dispatch(setHorarios(horariosQuery.data))
+    },[horariosQuery])
 
     useEffect(() => {
         if (Object.keys(nuevaTarea).length === 0) {

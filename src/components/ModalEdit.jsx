@@ -6,6 +6,7 @@ import { editarTarea } from '../features/itAdminSlice';
 
 const ModalMasInformacion = ({id, titular, direccion, telefono, trabajo, info_adicional, accesspoint_caja, direccion_ip_precinto, numero_cliente }) => {
     const dispatch = useDispatch();
+    const horariosDisponibles = useSelector(state => state.it.value.horarios)
     const handleAgregarTrabajo = (e) => {
         const titular = e.target.titular.value;
         const numero_cliente = e.target.numero_cliente.value.trim() !== "" ? e.target.numero_cliente.value : "indefinido";
@@ -15,6 +16,7 @@ const ModalMasInformacion = ({id, titular, direccion, telefono, trabajo, info_ad
         const accesspoint_caja = e.target.accesspoint_caja.value.trim() !== "" ? e.target.accesspoint_caja.value : "indefinido";
         const direccion_ip_precinto = e.target.direccion_ip_precinto.value.trim() !== "" ? e.target.direccion_ip_precinto.value : "indefinido";
         const info_adicional = e.target.info_adicional.value.trim() !== "" ? e.target.info_adicional.value : "indefinido";
+        const horario = e.target.horario.value;
         if (titular && direccion && trabajo) {
             const nuevoObjetoEditado = {
                 id,
@@ -25,7 +27,8 @@ const ModalMasInformacion = ({id, titular, direccion, telefono, trabajo, info_ad
                 trabajo,
                 accesspoint_caja,
                 direccion_ip_precinto,
-                info_adicional
+                info_adicional,
+                horario
             };
             dispatch(editarTarea(nuevoObjetoEditado))
             handleClose()
@@ -59,6 +62,18 @@ const ModalMasInformacion = ({id, titular, direccion, telefono, trabajo, info_ad
                             <input name='trabajo' className='inputNuevaTarea' type='text' defaultValue={trabajo  === "indefinido" ? "": trabajo} placeholder='Trabajo' />
                             <input name='accesspoint_caja' className='inputNuevaTarea' type='text' defaultValue={accesspoint_caja === "indefinido" ? "": accesspoint_caja} placeholder='Accesspoint/Caja'  />
                             <input name='direccion_ip_precinto' className='inputNuevaTarea' type='text' defaultValue={direccion_ip_precinto  === "indefinido" ? "": direccion_ip_precinto} placeholder='Direccion IP/Precinto' />
+                            <select className='selectForm' name="horario" >
+                                <option className='opcionSelect'value="0">Elegir turno</option>
+                                {
+                                    horariosDisponibles.map((h, index) => (
+                                        <option
+                                            key={index}
+                                            className='opcionSelect'
+                                            value={h}
+                                        >{h}</option>
+                                    ))
+                                }
+                            </select>
                             <textarea name='info_adicional' className='inputTextArea' type='text' defaultValue={info_adicional  === "indefinido" ? "": info_adicional}  placeholder='Comentarios adicionales' />
                             {/* <input name='' className='inputNuevaTarea' type='number' value='Horario' /> despues lo agrego*/}
                             <div className='flex justify-center gap-4 mt-4 mb-8'>
